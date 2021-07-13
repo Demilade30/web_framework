@@ -29,6 +29,15 @@
   <main role="main" class="container">
     <div class="row">
       <div class="col-md-8">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+               <div class="alert alert-{{ category }}">
+                 {{ message }}
+               </div>
+            {% endfor %}
+         {% endif %}
+       {% endwith %}
       {% block content %}
       <h1>This shows up on every page</h1>
       <h1>University of Missouri - St. Louis</h1>
